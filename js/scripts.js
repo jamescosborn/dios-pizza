@@ -4,7 +4,7 @@ function Pizza(toppings, size, toppingsPrice, sizePrice) {
   this.pizzaSize = size;
 }
 Pizza.prototype.orderInfo= function () {
-  return "So that's a " + this.pizzaSize + " " + this.pizzaToppings + ". Yeah, we got it. See you in 4 to 5 hours";
+  return "So that's a " + this.pizzaSize + " " + this.pizzaToppings + ". Yeah, we got it. See you in 4 to 5 hours. ";
 }
 
 Pizza.prototype.toppingsPrice = function () {
@@ -35,13 +35,13 @@ Pizza.prototype.toppingsPrice = function () {
 
 Pizza.prototype.sizePrice = function () {
     // return standardPrice;
-    // var standardPrice2 = 10
+      price2 = 10
     if (this.pizzaSize.match(/[X]\w+/g)) {
-      // standardPrice2 += 20
+      price2 += 20
       alert("Feeds 35 people-- It's 5 square feet!")
     }
     else if (this.pizzaSize.match(/[L]\w+/g)) {
-      // standardPrice2 += 5
+      price2 += 5
       alert("Good choice; there'll be leftovers.")
     }
     else if (this.pizzaSize.match(/[M]\w+/g)) {
@@ -49,15 +49,16 @@ Pizza.prototype.sizePrice = function () {
     }
     else if (this.pizzaSize.match(/[S]\w+/g)) {
       alert("Classic Dio sized!")
-      // standardPrice2 -= 4
+      price2 -= 4
     }
     else {
       alert("Flyin Hawaiian huh?")
-      // standardPrice2 += 3
+      price2 += 3
     };
     // var adjustedSizePrice = standardPrice2;
     // return adjustedSizePrice;
     // this.sizePrice = parseInt(adjustedSizePrice);
+    return price2;
 };
 //   else if (this.movieTime <= 4) {
 //     price /= 2;
@@ -77,7 +78,7 @@ $(document).ready(function() {
     var sizePrice = $("#pizzaSize").val();
     var pizza = new Pizza (inputtedToppings, inputtedSize);
     $(".output").text(pizza.orderInfo());
-    $(".output").append("Oh.. and that'll be " + pizza.toppingsPrice());
+    $(".output").append("Oh.. and that'll be '('$" + pizza.toppingsPrice() + " + $" + pizza.sizePrice() + "')' - 10. We make pizzas not math.")
     // $(".output2").text(pizza.toppingsPrice());
     // $(".output").text("<p>" + ticket.allStuff() + "</p>");
     // var price = ticket.getPrice();
