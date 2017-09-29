@@ -1,45 +1,49 @@
 // Business Logic
-function Pizza(toppings, size, price) {
+function Pizza(toppings, size, toppingsPrice, sizePrice) {
   this.pizzaToppings = toppings;
   this.pizzaSize = size;
-  this.pizzaPrice = price;
+  this.toppingsPrice = toppingsPrice;
+  this.sizePrice = sizePrice;
 }
 Pizza.prototype.orderInfo= function () {
-  return "So that's a " + this.pizzaSize + " " + this.pizzaToppings + ". Yeah, we got it. See you in 4 to 5 hours! Oh, that'll be " + this.pizzaPrice;
+  return "So that's a " + this.pizzaSize + " " + this.pizzaToppings + ". Yeah, we got it. See you in 4 to 5 hours. Oh, that'll be " + this.toppingsPrice;
 }
 
 Pizza.prototype.toppingsPrice = function () {
-  var standardPrice = 10;
+  // var standardPrice = 10;
   if (this.pizzaToppings.match(/[V]\w+/g)) {
-    standardPrice += 2
+    // standardPrice += 2
     alert("Our seaweed is toxic!")
   }
   else if (this.pizzaToppings.match(/[C]\w+/g)) {
     alert("Cheesey!")
-    standardPrice -= 2
+    // standardPrice -= 2
   }
   else if (this.pizzaToppings.match(/[Y]\w+/g)) {
     alert("Yep yep yep!")
   }
   else if (this.pizzaToppings.match(/[R]\w+/g)) {
-    alert("Go have a feast at lunch!")
-    standardPrice += 4
+    alert("Have a feast for lunch or dinner!")
+    // standardPrice += 4
   }
   else {
     alert("Flyin Hawaiian huh?")
-    standardPrice += 3
+    // standardPrice += 3
   };
-  return standardPrice;
+  this.toppingsPrice = "bleep"
+  // return standardPrice;
+  // var adjustedToppingsPrice = standardPrice;
 };
 
 Pizza.prototype.sizePrice = function () {
     // return standardPrice;
+    // var standardPrice2 = 10
     if (this.pizzaSize.match(/[X]\w+/g)) {
-      standardPrice += 20
+      // standardPrice2 += 20
       alert("Feeds 35 people-- It's 5 square feet!")
     }
     else if (this.pizzaSize.match(/[L]\w+/g)) {
-      standardPrice += 5
+      // standardPrice2 += 5
       alert("Good choice; there'll be leftovers.")
     }
     else if (this.pizzaSize.match(/[M]\w+/g)) {
@@ -47,14 +51,15 @@ Pizza.prototype.sizePrice = function () {
     }
     else if (this.pizzaSize.match(/[S]\w+/g)) {
       alert("Classic Dio sized!")
-      standardPrice -= 4
+      // standardPrice2 -= 4
     }
     else {
       alert("Flyin Hawaiian huh?")
-      standardPrice += 3
+      // standardPrice2 += 3
     };
-    var adjustedPrice = standardPrice;
-    return adjustedPrice;
+    // var adjustedSizePrice = standardPrice2;
+    // return adjustedSizePrice;
+    // this.sizePrice = parseInt(adjustedSizePrice);
 };
 //   else if (this.movieTime <= 4) {
 //     price /= 2;
@@ -72,12 +77,11 @@ $(document).ready(function() {
     var inputtedToppings = $("#pizzaToppings").val();
     var inputtedSize = $("#pizzaSize").val();
     var pizza = new Pizza (inputtedToppings, inputtedSize);
-    var pizzaPrice = ((pizza.toppingPrice() + pizza.sizePrice()) / 2)
     $(".output").text(pizza.orderInfo());
-    $(".output2").text(pizzaPrice);
+    // $(".output2").text(pizza.toppingsPrice());
     // $(".output").text("<p>" + ticket.allStuff() + "</p>");
     // var price = ticket.getPrice();
     // $(".output").text(price);
-
   });
 });
+// (pizza.toppingsPrice() + pizza.sizePrice()) / 2
