@@ -4,7 +4,7 @@ function Pizza(toppings, size) {
   this.pizzaSize = size;
 }
 Pizza.prototype.orderInfo= function () {
-  return "So that's a " + this.pizzaSize + this.pizzaToppings + ". Yeah, we'll get right on that.. See you in 4 to 5 hours!" ;
+  return "So that's a " + this.pizzaSize + " " + this.pizzaToppings + ". Yeah, we'll get right on that.. See you in 4 to 5 hours!" ;
 }
 
 Pizza.prototype.getPrice = function () {
@@ -12,13 +12,13 @@ Pizza.prototype.getPrice = function () {
   if (this.pizzaToppings.match(/[V]\w+/g)) {
     alert("You're winner!")
   }
-  if (this.pizzaToppings.match(/[C]\w+/g)) {
+  else if (this.pizzaToppings.match(/[C]\w+/g)) {
     alert("Cheesey!")
   }
-  if (this.pizzaToppings.match(/[Y]\w+/g)) {
+  else if (this.pizzaToppings.match(/[Y]\w+/g)) {
     alert("Yep yep yep!")
   }
-  if (this.pizzaToppings.match(/[R]\w+/g)) {
+  else if (this.pizzaToppings.match(/[R]\w+/g)) {
     alert("Go have a feast at lunch!")
   }
   else {
@@ -42,6 +42,7 @@ $(document).ready(function() {
     var inputtedSize = $("#pizzaSize").val();
     var pizza = new Pizza (inputtedToppings, inputtedSize);
     $(".output").text(pizza.orderInfo());
+    $(".output2").text(pizza.getPrice());
     // $(".output").text("<p>" + ticket.allStuff() + "</p>");
     // var price = ticket.getPrice();
     // $(".output").text(price);
