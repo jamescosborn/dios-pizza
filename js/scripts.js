@@ -1,29 +1,60 @@
 // Business Logic
-function Pizza(toppings, size) {
+function Pizza(toppings, size, price) {
   this.pizzaToppings = toppings;
   this.pizzaSize = size;
+  this.pizzaPrice = price;
 }
 Pizza.prototype.orderInfo= function () {
-  return "So that's a " + this.pizzaSize + " " + this.pizzaToppings + ". Yeah, we'll get right on that.. See you in 4 to 5 hours!" ;
+  return "So that's a " + this.pizzaSize + " " + this.pizzaToppings + ". Yeah, we got it. See you in 4 to 5 hours! Oh, that'll be " + this.pizzaPrice;
 }
 
-Pizza.prototype.getPrice = function () {
+Pizza.prototype.toppingsPrice = function () {
   var standardPrice = 10;
   if (this.pizzaToppings.match(/[V]\w+/g)) {
-    alert("You're winner!")
+    standardPrice += 2
+    alert("Our seaweed is toxic!")
   }
   else if (this.pizzaToppings.match(/[C]\w+/g)) {
     alert("Cheesey!")
+    standardPrice -= 2
   }
   else if (this.pizzaToppings.match(/[Y]\w+/g)) {
     alert("Yep yep yep!")
   }
   else if (this.pizzaToppings.match(/[R]\w+/g)) {
     alert("Go have a feast at lunch!")
+    standardPrice += 4
   }
   else {
     alert("Flyin Hawaiian huh?")
+    standardPrice += 3
   };
+  return standardPrice;
+};
+
+Pizza.prototype.sizePrice = function () {
+    // return standardPrice;
+    if (this.pizzaSize.match(/[X]\w+/g)) {
+      standardPrice += 20
+      alert("Feeds 35 people-- It's 5 square feet!")
+    }
+    else if (this.pizzaSize.match(/[L]\w+/g)) {
+      standardPrice += 5
+      alert("Good choice; there'll be leftovers.")
+    }
+    else if (this.pizzaSize.match(/[M]\w+/g)) {
+      alert("It's gonna be hot hot hot!")
+    }
+    else if (this.pizzaSize.match(/[S]\w+/g)) {
+      alert("Classic Dio sized!")
+      standardPrice -= 4
+    }
+    else {
+      alert("Flyin Hawaiian huh?")
+      standardPrice += 3
+    };
+    var adjustedPrice = standardPrice;
+    return adjustedPrice;
 };
 //   else if (this.movieTime <= 4) {
 //     price /= 2;
@@ -41,8 +72,9 @@ $(document).ready(function() {
     var inputtedToppings = $("#pizzaToppings").val();
     var inputtedSize = $("#pizzaSize").val();
     var pizza = new Pizza (inputtedToppings, inputtedSize);
+    var pizzaPrice = ((pizza.toppingPrice() + pizza.sizePrice()) / 2)
     $(".output").text(pizza.orderInfo());
-    $(".output2").text(pizza.getPrice());
+    $(".output2").text(pizzaPrice);
     // $(".output").text("<p>" + ticket.allStuff() + "</p>");
     // var price = ticket.getPrice();
     // $(".output").text(price);
