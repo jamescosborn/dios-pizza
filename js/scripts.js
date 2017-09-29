@@ -4,7 +4,7 @@ function Pizza(toppings, size, toppingsPrice, sizePrice) {
   this.pizzaSize = size;
 }
 Pizza.prototype.orderInfo= function () {
-  return "So that's a " + this.pizzaSize + " " + this.pizzaToppings + ". Yeah, we got it. See you in 4 to 5 hours. ";
+  return "So that's a " + this.pizzaSize + " " + this.pizzaToppings + ". Yeah, we got it. See you in 45 minutes to an hour. ";
 }
 
 Pizza.prototype.toppingsPrice = function () {
