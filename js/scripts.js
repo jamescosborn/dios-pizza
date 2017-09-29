@@ -29,45 +29,31 @@ Pizza.prototype.toppingsPrice = function () {
     price += 3
   };
   return price;
-  // return standardPrice;
-  // var adjustedToppingsPrice = standardPrice;
 };
 
 Pizza.prototype.sizePrice = function () {
-    // return standardPrice;
-      price2 = 10
-    if (this.pizzaSize.match(/[X]\w+/g)) {
-      price2 += 20
-      alert("Feeds 35 people-- It's 5 square feet!")
-    }
-    else if (this.pizzaSize.match(/[L]\w+/g)) {
-      price2 += 5
-      alert("Good choice; there'll be leftovers.")
-    }
-    else if (this.pizzaSize.match(/[M]\w+/g)) {
-      alert("It's gonna be hot hot hot!")
-    }
-    else if (this.pizzaSize.match(/[S]\w+/g)) {
-      alert("Classic Dio sized!")
-      price2 -= 4
-    }
-    else {
-      alert("Flyin Hawaiian huh?")
-      price2 += 3
-    };
-    // var adjustedSizePrice = standardPrice2;
-    // return adjustedSizePrice;
-    // this.sizePrice = parseInt(adjustedSizePrice);
-    return price2;
+  var price2 = 10
+  if (this.pizzaSize.match(/[X]\w+/g)) {
+    price2 += 20
+    alert("Feeds 35 people-- It's 5 square feet!")
+  }
+  else if (this.pizzaSize.match(/[L]\w+/g)) {
+    price2 += 5
+    alert("Good choice; there'll be leftovers.")
+  }
+  else if (this.pizzaSize.match(/[M]\w+/g)) {
+    alert("It's gonna be hot hot hot!")
+  }
+  else if (this.pizzaSize.match(/[S]\w+/g)) {
+    alert("Classic Dio sized!")
+    price2 -= 4
+  }
+  else {
+    alert("Flyin Hawaiian huh?")
+    price2 += 3
+  };
+  return price2;
 };
-//   else if (this.movieTime <= 4) {
-//     price /= 2;
-//   }
-//   else {
-//   price *= 2;
-//   };
-//   return price;
-// }
 
 // UI Logic
 $(document).ready(function() {
@@ -78,11 +64,7 @@ $(document).ready(function() {
     var sizePrice = $("#pizzaSize").val();
     var pizza = new Pizza (inputtedToppings, inputtedSize);
     $(".output").text(pizza.orderInfo());
-    $(".output").append("Oh.. and that'll be '('$" + pizza.toppingsPrice() + " + $" + pizza.sizePrice() + "')' - 10. We make pizzas not math.")
-    // $(".output2").text(pizza.toppingsPrice());
-    // $(".output").text("<p>" + ticket.allStuff() + "</p>");
-    // var price = ticket.getPrice();
-    // $(".output").text(price);
+    $(".output").append("Oh.. and that'll be $" + ((pizza.toppingsPrice() + pizza.sizePrice()) - 10));
+
   });
 });
-// (pizza.toppingsPrice() + pizza.sizePrice()) / 2
