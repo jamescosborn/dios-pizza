@@ -14,7 +14,7 @@ Pizza.prototype.toppingsPrice = function () {
     alert("Our seaweed is toxic!")
   }
   else if (this.pizzaToppings.match(/[C]\w+/g)) {
-    alert("Cheesey!")
+    alert("Cheesy!")
     price -= 2
   }
   else if (this.pizzaToppings.match(/[Y]\w+/g)) {
